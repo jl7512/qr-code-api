@@ -18,11 +18,11 @@ Open a terminal and run the following command:
 mvn spring-boot:run
 ```
 
-Enter the endpoint url in your postman:
+Enter the POST endpoint in your postman:
 ```
 http://localhost:8080/qrcode/generate/image
 ```
-In the body of your request, define a url:
+In the body of your POST request, define a url:
 ```
 {
 	"url": "https://www.google.com"
