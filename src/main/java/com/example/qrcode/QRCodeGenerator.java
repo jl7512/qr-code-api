@@ -17,21 +17,21 @@ public class QRCodeGenerator {
 	private BitMatrix bitMatrix;
 	private ByteArrayOutputStream outputStream;
 	private String PNG_IMAGE_FORMAT = "PNG";
-	private int width = 1000;
-	private int height = 1000;
+	private int defaultWidth = 150;
+	private int defaultHeight = 150;
 
-	public byte[] generate(String text, int width, int height) throws WriterException, IOException {
-		if (width == 0) {
-			width = this.width;
-		}		
-		if (height == 0) {
-			height = this.height;
+	public byte[] generate(String text, Integer width, Integer height) throws WriterException, IOException {
+		if(width == null) {
+			width = this.defaultWidth;
+		}
+		if(height == null) {
+			height = this.defaultHeight;
 		}
 		qrCodeWriter = new QRCodeWriter();
 		bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
 		outputStream = new ByteArrayOutputStream();
 		MatrixToImageWriter.writeToStream(bitMatrix, PNG_IMAGE_FORMAT, outputStream);
-		// Flush all the bytes to stream
+		// Flush all the bytes to output stream
 		outputStream.flush();
 		return outputStream.toByteArray();
 	}
