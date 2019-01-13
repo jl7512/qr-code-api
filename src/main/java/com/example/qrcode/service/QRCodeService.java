@@ -14,7 +14,7 @@ public class QRCodeService {
 	@Autowired
 	private QRCodeGenerator qrCode;
 
-	public byte[] generate(String url, int width, int height) throws WriterException, IOException {
+	public byte[] generate(String url, Integer width, Integer height) throws WriterException, IOException {
 		return qrCode.generate(url, width, height);
 	}
 	

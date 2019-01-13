@@ -21,7 +21,8 @@ public class QRCodeController {
 	private QRCodeService service;
 	  
 	@PostMapping(value = "/generate/image", produces = MediaType.IMAGE_PNG_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody byte[] generateImage(@RequestBody String url, @RequestBody(required = false) int width, @RequestBody(required = false) int height) throws WriterException, IOException {
+	@ResponseBody
+	public byte[] generateImage(@RequestBody String url, @RequestBody(required = false) Integer width, @RequestBody(required = false) Integer height) throws WriterException, IOException {
 		return service.generate(url, width, height);
 	}
 	
