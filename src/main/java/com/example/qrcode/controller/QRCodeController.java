@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.qrcode.domain.QRCodeDTO;
 import com.example.qrcode.service.QRCodeService;
 import com.google.zxing.WriterException;
 
@@ -22,8 +23,8 @@ public class QRCodeController {
 	  
 	@PostMapping(value = "/generate/image", produces = MediaType.IMAGE_PNG_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public byte[] generateImage(@RequestBody String url, @RequestBody(required = false) Integer width, @RequestBody(required = false) Integer height) throws WriterException, IOException {
-		return service.generate(url, width, height);
+	public byte[] generateImage(@RequestBody QRCodeDTO qrCode) throws WriterException, IOException {
+		return service.generate(qrCode);
 	}
 	
 }

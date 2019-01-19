@@ -1,4 +1,4 @@
-package com.example.qrcode;
+package com.example.qrcode.generator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
